@@ -1,0 +1,104 @@
+<giraf_search query_id="query">
+  <chain chain_id="A" nhits="5">
+    <interface type="peptide" if_id="4HVU:2:A-1:B-1" rank="1">
+      <pdbid>4HVU</pdbid>
+      <assembly_id>2</assembly_id>
+      <label_asym_id>A-1</label_asym_id>
+      <auth_asym_id>A-1</auth_asym_id>
+      <entity_id>1</entity_id>
+      <description>Proto-oncogene tyrosine-protein kinase Src</description>
+      <l_label_asym_id>B-1</l_label_asym_id>
+      <l_auth_asym_id>B-1</l_auth_asym_id>
+      <l_entity_id>2</l_entity_id>
+      <l_description>SYNTHETIC PEPTIDE Acetyl-APPLPPRNRP</l_description>
+      <comp_id>polypeptide(L)</comp_id>
+      <score>108.506944444</score>
+      <gi_score>92.7272727273</gi_score>
+      <tanimoto_score>0.319693094629</tanimoto_score>
+      <nali>125</nali>
+      <nali_res>15</nali_res>
+      <blast_seq_id>-1.</blast_seq_id>
+      <blast_evalue>10.</blast_evalue>
+    </interface>
+    <interface type="peptide" if_id="4HVU:1:A-1:B-1" rank="2">
+      <pdbid>4HVU</pdbid>
+      <assembly_id>1</assembly_id>
+      <label_asym_id>A-1</label_asym_id>
+      <auth_asym_id>A-1</auth_asym_id>
+      <entity_id>1</entity_id>
+      <description>Proto-oncogene tyrosine-protein kinase Src</description>
+      <l_label_asym_id>B-1</l_label_asym_id>
+      <l_auth_asym_id>B-1</l_auth_asym_id>
+      <l_entity_id>2</l_entity_id>
+      <l_description>SYNTHETIC PEPTIDE Acetyl-APPLPPRNRP</l_description>
+      <comp_id>polypeptide(L)</comp_id>
+      <score>108.506944444</score>
+      <gi_score>92.7272727273</gi_score>
+      <tanimoto_score>0.319693094629</tanimoto_score>
+      <nali>125</nali>
+      <nali_res>15</nali_res>
+      <blast_seq_id>-1.</blast_seq_id>
+      <blast_evalue>10.</blast_evalue>
+    </interface>
+    <interface type="peptide" if_id="4HVU:2:A-2:B-2" rank="3">
+      <pdbid>4HVU</pdbid>
+      <assembly_id>2</assembly_id>
+      <label_asym_id>A-2</label_asym_id>
+      <auth_asym_id>A-2</auth_asym_id>
+      <entity_id>1</entity_id>
+      <description>Proto-oncogene tyrosine-protein kinase Src</description>
+      <l_label_asym_id>B-2</l_label_asym_id>
+      <l_auth_asym_id>B-2</l_auth_asym_id>
+      <l_entity_id>2</l_entity_id>
+      <l_description>SYNTHETIC PEPTIDE Acetyl-APPLPPRNRP</l_description>
+      <comp_id>polypeptide(L)</comp_id>
+      <score>108.506944441</score>
+      <gi_score>92.7272727273</gi_score>
+      <tanimoto_score>0.319693094629</tanimoto_score>
+      <nali>125</nali>
+      <nali_res>15</nali_res>
+      <blast_seq_id>-1.</blast_seq_id>
+      <blast_evalue>10.</blast_evalue>
+    </interface>
+    <interface type="peptide" if_id="4HVU:2:A-1:B-2" rank="4">
+      <pdbid>4HVU</pdbid>
+      <assembly_id>2</assembly_id>
+      <label_asym_id>A-1</label_asym_id>
+      <auth_asym_id>A-1</auth_asym_id>
+      <entity_id>1</entity_id>
+      <description>Proto-oncogene tyrosine-protein kinase Src</description>
+      <l_label_asym_id>B-2</l_label_asym_id>
+      <l_auth_asym_id>B-2</l_auth_asym_id>
+      <l_entity_id>2</l_entity_id>
+      <l_description>SYNTHETIC PEPTIDE Acetyl-APPLPPRNRP</l_description>
+      <comp_id>polypeptide(L)</comp_id>
+      <score>33.1081081081</score>
+      <gi_score>94.5945945946</gi_score>
+      <tanimoto_score>0.0935828877005</tanimoto_score>
+      <nali>35</nali>
+      <nali_res>4</nali_res>
+      <blast_seq_id>-1.</blast_seq_id>
+      <blast_evalue>10.</blast_evalue>
+    </interface>
+    <interface type="peptide" if_id="4HVU:2:A-2:B-1" rank="5">
+      <pdbid>4HVU</pdbid>
+      <assembly_id>2</assembly_id>
+      <label_asym_id>A-2</label_asym_id>
+      <auth_asym_id>A-2</auth_asym_id>
+      <entity_id>1</entity_id>
+      <description>Proto-oncogene tyrosine-protein kinase Src</description>
+      <l_label_asym_id>B-1</l_label_asym_id>
+      <l_auth_asym_id>B-1</l_auth_asym_id>
+      <l_entity_id>2</l_entity_id>
+      <l_description>SYNTHETIC PEPTIDE Acetyl-APPLPPRNRP</l_description>
+      <comp_id>polypeptide(L)</comp_id>
+      <score>33.1081081075</score>
+      <gi_score>94.5945945946</gi_score>
+      <tanimoto_score>0.0935828877005</tanimoto_score>
+      <nali>35</nali>
+      <nali_res>4</nali_res>
+      <blast_seq_id>-1.</blast_seq_id>
+      <blast_evalue>10.</blast_evalue>
+    </interface>
+  </chain>
+</giraf_search>

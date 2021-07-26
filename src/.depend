@@ -1,0 +1,59 @@
+asa.cmo : vec3.cmo intCell.cmo atom.cmo
+asa.cmx : vec3.cmx intCell.cmx atom.cmx
+atom.cmo : pDBjBasis.cmo atom_t.cmi
+atom.cmx : pDBjBasis.cmx atom_t.cmx
+atom_j.cmo : atom_t.cmi atom_j.cmi
+atom_j.cmx : atom_t.cmx atom_j.cmi
+atom_j.cmi : atom_t.cmi
+atom_t.cmo : atom_t.cmi
+atom_t.cmx : atom_t.cmi
+atom_t.cmi :
+bLOSUM.cmo :
+bLOSUM.cmx :
+biounit.cmo : pDBjBasis.cmo atom.cmo
+biounit.cmx : pDBjBasis.cmx atom.cmx
+blast.cmo : pDBjUtil.cmo ecomm.cmo atom.cmo
+blast.cmx : pDBjUtil.cmx ecomm.cmx atom.cmx
+check.cmo : pDBx.cmo mmCIF.cmo
+check.cmx : pDBx.cmx mmCIF.cmx
+dict2modules.cmo : star.cmo pDBx.cmo
+dict2modules.cmx : star.cmx pDBx.cmx
+ecomm.cmo :
+ecomm.cmx :
+fheap.cmo :
+fheap.cmx :
+intCell.cmo : atom.cmo
+intCell.cmx : atom.cmx
+mmCIF.cmo : star_syntax.cmo star.cmo pDBx.cmo pDBjBasis.cmo ecomm.cmo
+mmCIF.cmx : star_syntax.cmx star.cmx pDBx.cmx pDBjBasis.cmx ecomm.cmx
+oONS.cmo : atom.cmo
+oONS.cmx : atom.cmx
+pDBFormat.cmo : pDBjBasis.cmo ecomm.cmo atom.cmo
+pDBFormat.cmx : pDBjBasis.cmx ecomm.cmx atom.cmx
+pDBML.cmo : pDBjBasis.cmo ecomm.cmo
+pDBML.cmx : pDBjBasis.cmx ecomm.cmx
+pDBjBasis.cmo :
+pDBjBasis.cmx :
+pDBjUtil.cmo : pDBjBasis.cmo pDBML.cmo pDBFormat.cmo mmCIF.cmo atom.cmo
+pDBjUtil.cmx : pDBjBasis.cmx pDBML.cmx pDBFormat.cmx mmCIF.cmx atom.cmx
+pDBx.cmo : star_syntax.cmo star.cmo
+pDBx.cmx : star_syntax.cmx star.cmx
+pDBxOut.cmo : pDBjBasis.cmo
+pDBxOut.cmx : pDBjBasis.cmx
+sql.cmo :
+sql.cmx :
+star.cmo : star_syntax.cmo star_parser.cmi star_lexer.cmo ecomm.cmo
+star.cmx : star_syntax.cmx star_parser.cmx star_lexer.cmx ecomm.cmx
+star_lexer.cmo : star_parser.cmi
+star_lexer.cmx : star_parser.cmx
+star_parser.cmo : star_syntax.cmo star_parser.cmi
+star_parser.cmx : star_syntax.cmx star_parser.cmi
+star_parser.cmi : star_syntax.cmo
+star_syntax.cmo :
+star_syntax.cmx :
+test.cmo : pDBx.cmo pDBjBasis.cmo pDBML.cmo pDBFormat.cmo mmCIF.cmo
+test.cmx : pDBx.cmx pDBjBasis.cmx pDBML.cmx pDBFormat.cmx mmCIF.cmx
+vec3.cmo :
+vec3.cmx :
+wbm.cmo : fheap.cmo
+wbm.cmx : fheap.cmx

@@ -1,0 +1,46 @@
+util.cmo :
+util.cmx :
+prep_struct.cmo : util.cmo
+prep_struct.cmx : util.cmx
+annot.cmo : util.cmo
+annot.cmx : util.cmx
+cmp_obj.cmo : util.cmo
+cmp_obj.cmx : util.cmx
+frame_t.cmo : frame_t.cmi
+frame_t.cmx : frame_t.cmi
+frame_j.cmo : frame_t.cmi frame_j.cmi
+frame_j.cmx : frame_t.cmx frame_j.cmi
+refset.cmo : util.cmo frame_j.cmi
+refset.cmx : util.cmx frame_j.cmx
+interface.cmo : util.cmo refset.cmo prep_struct.cmo
+interface.cmx : util.cmx refset.cmx prep_struct.cmx
+patom.cmo : util.cmo refset.cmo interface.cmo
+patom.cmx : util.cmx refset.cmx interface.cmx
+gi.cmo : util.cmo refset.cmo
+gi.cmx : util.cmx refset.cmx
+ir.cmo : util.cmo refset.cmo patom.cmo interface.cmo gi.cmo
+ir.cmx : util.cmx refset.cmx patom.cmx interface.cmx gi.cmx
+load_data.cmo : util.cmo refset.cmo prep_struct.cmo patom.cmo interface.cmo \
+    cmp_obj.cmo annot.cmo
+load_data.cmx : util.cmx refset.cmx prep_struct.cmx patom.cmx interface.cmx \
+    cmp_obj.cmx annot.cmx
+prepin.cmo : util.cmo refset.cmo prep_struct.cmo
+prepin.cmx : util.cmx refset.cmx prep_struct.cmx
+save_results.cmo : util.cmo ir.cmo interface.cmo
+save_results.cmx : util.cmx ir.cmx interface.cmx
+giraf_load.cmo : util.cmo load_data.cmo
+giraf_load.cmx : util.cmx load_data.cmx
+giraf_ifs.cmo : util.cmo ir.cmo interface.cmo gi.cmo
+giraf_ifs.cmx : util.cmx ir.cmx interface.cmx gi.cmx
+giraf_search.cmo : util.cmo save_results.cmo prepin.cmo prep_struct.cmo \
+    ir.cmo gi.cmo
+giraf_search.cmx : util.cmx save_results.cmx prepin.cmx prep_struct.cmx \
+    ir.cmx gi.cmx
+test.cmo : util.cmo
+test.cmx : util.cmx
+test_client.cmo :
+test_client.cmx :
+test_server.cmo :
+test_server.cmx :
+test_xml.cmo :
+test_xml.cmx :

@@ -1,0 +1,505 @@
+   0  $accept : %entry% $end
+
+   1  star_file : star_file_list EOF
+
+   2  star_file_list : data_block
+   3                 | global_block
+   4                 | data_block star_file_list
+   5                 | global_block star_file_list
+
+   6  data_block : DATA data_block_body
+
+   7  data_block_body : data
+   8                  | SAVE data_list SAVE_
+   9                  | data data_block_body
+  10                  | SAVE data_list SAVE_ data_block_body
+
+  11  data_list : data
+  12            | data data_list
+
+  13  global_block : GLOBAL global_block_body
+
+  14  global_block_body : data
+  15                    | data global_block_body
+
+  16  data : data_name data_value
+  17       | data_loop
+
+  18  data_name : USCORE
+
+  19  data_value : STRING
+  20             | SQUOTE
+  21             | DQUOTE
+  22             | SEMI
+  23             | FRAME
+
+  24  data_loop : LOOP_ data_loop_definition data_loop_values
+
+  25  data_loop_definition : data_loop_field
+  26                       | data_loop_field data_loop_definition
+
+  27  data_loop_field : data_name
+  28                  | nested_loop
+
+  29  nested_loop : LOOP_ data_loop_definition
+  30              | LOOP_ data_loop_definition STOP_
+
+  31  data_loop_values : data_loop_item
+  32                   | data_loop_item data_loop_values
+
+  33  data_loop_item : data_value
+  34                 | STOP_
+
+  35  %entry% : '\001' star_file
+
+state 0
+	$accept : . %entry% $end  (0)
+
+	'\001'  shift 1
+	.  error
+
+	%entry%  goto 2
+
+
+state 1
+	%entry% : '\001' . star_file  (35)
+
+	GLOBAL  shift 3
+	DATA  shift 4
+	.  error
+
+	star_file  goto 5
+	star_file_list  goto 6
+	data_block  goto 7
+	global_block  goto 8
+
+
+state 2
+	$accept : %entry% . $end  (0)
+
+	$end  accept
+
+
+state 3
+	global_block : GLOBAL . global_block_body  (13)
+
+	LOOP_  shift 9
+	USCORE  shift 10
+	.  error
+
+	data  goto 11
+	global_block_body  goto 12
+	data_name  goto 13
+	data_loop  goto 14
+
+
+state 4
+	data_block : DATA . data_block_body  (6)
+
+	LOOP_  shift 9
+	SAVE  shift 15
+	USCORE  shift 10
+	.  error
+
+	data_block_body  goto 16
+	data  goto 17
+	data_name  goto 13
+	data_loop  goto 14
+
+
+state 5
+	%entry% : '\001' star_file .  (35)
+
+	.  reduce 35
+
+
+state 6
+	star_file : star_file_list . EOF  (1)
+
+	EOF  shift 18
+	.  error
+
+
+state 7
+	star_file_list : data_block .  (2)
+	star_file_list : data_block . star_file_list  (4)
+
+	GLOBAL  shift 3
+	DATA  shift 4
+	EOF  reduce 2
+
+	star_file_list  goto 19
+	data_block  goto 7
+	global_block  goto 8
+
+
+state 8
+	star_file_list : global_block .  (3)
+	star_file_list : global_block . star_file_list  (5)
+
+	GLOBAL  shift 3
+	DATA  shift 4
+	EOF  reduce 3
+
+	star_file_list  goto 20
+	data_block  goto 7
+	global_block  goto 8
+
+
+state 9
+	data_loop : LOOP_ . data_loop_definition data_loop_values  (24)
+
+	LOOP_  shift 21
+	USCORE  shift 10
+	.  error
+
+	data_name  goto 22
+	data_loop_definition  goto 23
+	data_loop_field  goto 24
+	nested_loop  goto 25
+
+
+state 10
+	data_name : USCORE .  (18)
+
+	.  reduce 18
+
+
+state 11
+	global_block_body : data .  (14)
+	global_block_body : data . global_block_body  (15)
+
+	LOOP_  shift 9
+	USCORE  shift 10
+	GLOBAL  reduce 14
+	DATA  reduce 14
+	EOF  reduce 14
+
+	data  goto 11
+	global_block_body  goto 26
+	data_name  goto 13
+	data_loop  goto 14
+
+
+state 12
+	global_block : GLOBAL global_block_body .  (13)
+
+	.  reduce 13
+
+
+state 13
+	data : data_name . data_value  (16)
+
+	STRING  shift 27
+	SQUOTE  shift 28
+	DQUOTE  shift 29
+	SEMI  shift 30
+	FRAME  shift 31
+	.  error
+
+	data_value  goto 32
+
+
+state 14
+	data : data_loop .  (17)
+
+	.  reduce 17
+
+
+state 15
+	data_block_body : SAVE . data_list SAVE_  (8)
+	data_block_body : SAVE . data_list SAVE_ data_block_body  (10)
+
+	LOOP_  shift 9
+	USCORE  shift 10
+	.  error
+
+	data  goto 33
+	data_list  goto 34
+	data_name  goto 13
+	data_loop  goto 14
+
+
+state 16
+	data_block : DATA data_block_body .  (6)
+
+	.  reduce 6
+
+
+state 17
+	data_block_body : data .  (7)
+	data_block_body : data . data_block_body  (9)
+
+	LOOP_  shift 9
+	SAVE  shift 15
+	USCORE  shift 10
+	GLOBAL  reduce 7
+	DATA  reduce 7
+	EOF  reduce 7
+
+	data_block_body  goto 35
+	data  goto 17
+	data_name  goto 13
+	data_loop  goto 14
+
+
+state 18
+	star_file : star_file_list EOF .  (1)
+
+	.  reduce 1
+
+
+state 19
+	star_file_list : data_block star_file_list .  (4)
+
+	.  reduce 4
+
+
+state 20
+	star_file_list : global_block star_file_list .  (5)
+
+	.  reduce 5
+
+
+state 21
+	nested_loop : LOOP_ . data_loop_definition  (29)
+	nested_loop : LOOP_ . data_loop_definition STOP_  (30)
+
+	LOOP_  shift 21
+	USCORE  shift 10
+	.  error
+
+	data_name  goto 22
+	data_loop_definition  goto 36
+	data_loop_field  goto 24
+	nested_loop  goto 25
+
+
+state 22
+	data_loop_field : data_name .  (27)
+
+	.  reduce 27
+
+
+state 23
+	data_loop : LOOP_ data_loop_definition . data_loop_values  (24)
+
+	STOP_  shift 37
+	STRING  shift 27
+	SQUOTE  shift 28
+	DQUOTE  shift 29
+	SEMI  shift 30
+	FRAME  shift 31
+	.  error
+
+	data_value  goto 38
+	data_loop_values  goto 39
+	data_loop_item  goto 40
+
+
+24: shift/reduce conflict (shift 21, reduce 25) on LOOP_
+24: shift/reduce conflict (shift 10, reduce 25) on USCORE
+state 24
+	data_loop_definition : data_loop_field .  (25)
+	data_loop_definition : data_loop_field . data_loop_definition  (26)
+
+	LOOP_  shift 21
+	USCORE  shift 10
+	STOP_  reduce 25
+	STRING  reduce 25
+	SQUOTE  reduce 25
+	DQUOTE  reduce 25
+	SEMI  reduce 25
+	FRAME  reduce 25
+
+	data_name  goto 22
+	data_loop_definition  goto 41
+	data_loop_field  goto 24
+	nested_loop  goto 25
+
+
+state 25
+	data_loop_field : nested_loop .  (28)
+
+	.  reduce 28
+
+
+state 26
+	global_block_body : data global_block_body .  (15)
+
+	.  reduce 15
+
+
+state 27
+	data_value : STRING .  (19)
+
+	.  reduce 19
+
+
+state 28
+	data_value : SQUOTE .  (20)
+
+	.  reduce 20
+
+
+state 29
+	data_value : DQUOTE .  (21)
+
+	.  reduce 21
+
+
+state 30
+	data_value : SEMI .  (22)
+
+	.  reduce 22
+
+
+state 31
+	data_value : FRAME .  (23)
+
+	.  reduce 23
+
+
+state 32
+	data : data_name data_value .  (16)
+
+	.  reduce 16
+
+
+state 33
+	data_list : data .  (11)
+	data_list : data . data_list  (12)
+
+	LOOP_  shift 9
+	USCORE  shift 10
+	SAVE_  reduce 11
+
+	data  goto 33
+	data_list  goto 42
+	data_name  goto 13
+	data_loop  goto 14
+
+
+state 34
+	data_block_body : SAVE data_list . SAVE_  (8)
+	data_block_body : SAVE data_list . SAVE_ data_block_body  (10)
+
+	SAVE_  shift 43
+	.  error
+
+
+state 35
+	data_block_body : data data_block_body .  (9)
+
+	.  reduce 9
+
+
+36: shift/reduce conflict (shift 44, reduce 29) on STOP_
+state 36
+	nested_loop : LOOP_ data_loop_definition .  (29)
+	nested_loop : LOOP_ data_loop_definition . STOP_  (30)
+
+	STOP_  shift 44
+	LOOP_  reduce 29
+	USCORE  reduce 29
+	STRING  reduce 29
+	SQUOTE  reduce 29
+	DQUOTE  reduce 29
+	SEMI  reduce 29
+	FRAME  reduce 29
+
+
+state 37
+	data_loop_item : STOP_ .  (34)
+
+	.  reduce 34
+
+
+state 38
+	data_loop_item : data_value .  (33)
+
+	.  reduce 33
+
+
+state 39
+	data_loop : LOOP_ data_loop_definition data_loop_values .  (24)
+
+	.  reduce 24
+
+
+state 40
+	data_loop_values : data_loop_item .  (31)
+	data_loop_values : data_loop_item . data_loop_values  (32)
+
+	STOP_  shift 37
+	STRING  shift 27
+	SQUOTE  shift 28
+	DQUOTE  shift 29
+	SEMI  shift 30
+	FRAME  shift 31
+	GLOBAL  reduce 31
+	DATA  reduce 31
+	LOOP_  reduce 31
+	SAVE  reduce 31
+	SAVE_  reduce 31
+	USCORE  reduce 31
+	EOF  reduce 31
+
+	data_value  goto 38
+	data_loop_values  goto 45
+	data_loop_item  goto 40
+
+
+state 41
+	data_loop_definition : data_loop_field data_loop_definition .  (26)
+
+	.  reduce 26
+
+
+state 42
+	data_list : data data_list .  (12)
+
+	.  reduce 12
+
+
+state 43
+	data_block_body : SAVE data_list SAVE_ .  (8)
+	data_block_body : SAVE data_list SAVE_ . data_block_body  (10)
+
+	LOOP_  shift 9
+	SAVE  shift 15
+	USCORE  shift 10
+	GLOBAL  reduce 8
+	DATA  reduce 8
+	EOF  reduce 8
+
+	data_block_body  goto 46
+	data  goto 17
+	data_name  goto 13
+	data_loop  goto 14
+
+
+state 44
+	nested_loop : LOOP_ data_loop_definition STOP_ .  (30)
+
+	.  reduce 30
+
+
+state 45
+	data_loop_values : data_loop_item data_loop_values .  (32)
+
+	.  reduce 32
+
+
+state 46
+	data_block_body : SAVE data_list SAVE_ data_block_body .  (10)
+
+	.  reduce 10
+
+
+State 24 contains 2 shift/reduce conflicts.
+State 36 contains 1 shift/reduce conflict.
+
+
+16 terminals, 18 nonterminals
+36 grammar rules, 47 states
